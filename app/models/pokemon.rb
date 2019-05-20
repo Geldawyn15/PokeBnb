@@ -19,9 +19,9 @@ class Pokemon < ApplicationRecord
     'Steel',
     'Fairy'
   ]
-  belongs_to :professor, class_name: "User", foreign_key: "professor_id"
-  has_many :battles
-  has_many :reviews, through: :battles
+  belongs_to :professor, class_name: "User"
+  has_many :transfers
+  has_many :reviews, through: :transfers
   validates :name, :professor_id, :level, presence: true
-  validates :type, inclusion: { in: TYPE_ARRAY, message: '%{value} is not a valid category' }, presence: true
+  validates :poke_type, inclusion: { in: TYPE_ARRAY, message: '%{value} is not a valid category' }, presence: true
 end
