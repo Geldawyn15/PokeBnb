@@ -1,5 +1,5 @@
 class Pokemon < ApplicationRecord
-  type_array = [
+  TYPE_ARRAY = [
     'Normal',
     'Fire',
     'Fighting',
@@ -21,8 +21,7 @@ class Pokemon < ApplicationRecord
   ]
   belongs_to :professor, class_name: "User", foreign_key: "professor_id"
   has_many :battles
+  has_many :reviews, through: :battles
   validates :name, :professor_id, :level, presence: true
-  validates :type, inclusion: { in: type_array, message: '%{value} is not a valid category' }
-
-
+  validates :type, inclusion: { in: TYPE_ARRAY, message: '%{value} is not a valid category' }, presence: true
 end
