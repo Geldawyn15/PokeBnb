@@ -10,24 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_140545) do
+ActiveRecord::Schema.define(version: 2019_05_20_142547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "battles", force: :cascade do |t|
-    t.integer "date", null: false
-    t.bigint "user_id", null: false
-    t.bigint "pokemon_id", null: false
-    t.string "enemy_name"
-    t.string "enemy_type"
-    t.integer "enemy_level"
-    t.string "outcome"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["pokemon_id"], name: "index_battles_on_pokemon_id"
-    t.index ["user_id"], name: "index_battles_on_user_id"
-  end
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +34,20 @@ ActiveRecord::Schema.define(version: 2019_05_20_140545) do
     t.index ["battle_id"], name: "index_reviews_on_battle_id"
   end
 
+  create_table "transfers", force: :cascade do |t|
+    t.integer "date", null: false
+    t.bigint "user_id", null: false
+    t.bigint "pokemon_id", null: false
+    t.string "enemy_name"
+    t.string "enemy_type"
+    t.integer "enemy_level"
+    t.string "outcome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pokemon_id"], name: "index_transfers_on_pokemon_id"
+    t.index ["user_id"], name: "index_transfers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_140545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "battles", "pokemons"
-  add_foreign_key "battles", "users"
   add_foreign_key "pokemons", "users"
-  add_foreign_key "reviews", "battles"
+  add_foreign_key "reviews", "transfers", column: "battle_id"
+  add_foreign_key "transfers", "pokemons"
+  add_foreign_key "transfers", "users"
 end
