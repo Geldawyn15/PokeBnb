@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
+  get 'users/new'
   devise_for :users
-
-  root to: 'pokemons#index', as: 'home'
-  resources :users, only: %i[show] do
-    resources :pokemons, only: %i[new create]
+  root to: 'pages#home'
+  resources :pokemons, only: %i[show new create edit update delete]  do
+    get :search
   end
-
-  resources :pokemons, only: %i[show edit update destroy]  do
-    collection do
-      get :search
-    end
-    resources :transfers, only: %i[create]
-  end
-  resources :transfers, only: %i[update destroy] do
-    resources :reviews, only: %i[new create]
-  end
+  resources :transfers, only: %[index new create edit update]
+  resources :reviews, only: %[index new create]
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
