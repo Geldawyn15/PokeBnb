@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: 'pokemons#index', as: 'home'
   resources :users, only: %i[show] do
     resources :pokemons, only: %i[new create]
@@ -14,6 +15,4 @@ Rails.application.routes.draw do
   resources :transfers, only: %i[update destroy] do
     resources :reviews, only: %i[new create]
   end
-
-
 end
