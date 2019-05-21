@@ -1,6 +1,7 @@
 class PokemonsController < ApplicationController
   before_action :set_pokemon, only: %i[show edit update destroy]
   before_action :set_user, only: %i[new create update]
+  skip_before_action :authenticate_user!, only: %i[index search]
 
   def index
     @pokemons = Pokemon.all
@@ -38,6 +39,7 @@ class PokemonsController < ApplicationController
   end
 
   def search
+
   end
 
   private
