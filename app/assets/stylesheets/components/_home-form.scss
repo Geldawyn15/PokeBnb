@@ -1,5 +1,21 @@
 
-.form {
-  position: relative;
-  margin-top: auto;
+.container {
+  margin-top: 16px
+}
+
+.form-control {
+  border-color: #ff4949;
+  border-radius: 5px;
+  border-width: 2px;
+  margin-left: 2px;
+}
+
+.button3 {
+  background-color: #ff4949;
+  margin-left: 8px;
+  color: #eeeeee;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 8px;
 }

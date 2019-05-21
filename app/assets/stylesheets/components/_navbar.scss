@@ -2,13 +2,17 @@
   background: #ff4949;
   height: 60px;
   text-align: right;
+  display: flex;
+  // justify-content: /* aligner verticalement */
+  // align-items: /* haut bas*/
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.log-in {
-  position: relative;
+.login {
   background-color: #eeeeee;
   color: #ff4949;
   border: none;
   border-radius: 5px;
-  margin-top: 16px;
+  font-weight: bold;
 }
