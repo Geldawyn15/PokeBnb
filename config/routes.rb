@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/new'
   devise_for :users
   root to: 'pokemons#index'
   resources :pokemons, only: %i[show new create edit update delete]  do
