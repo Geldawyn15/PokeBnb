@@ -5,8 +5,8 @@ class TransfersController < ApplicationController
   def create
     @transfer = Transfer.new(params_transfer)
     @transfer.trainer_id = current_user
-    @transfer.pokemon_id = @pokemon
-    if @pokemon.save!
+    @transfer.pokemon_id = @pokemon.id
+    if @transfer.save!
       redirect_to user_path(current_user)
     else
       render :new
@@ -14,19 +14,12 @@ class TransfersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @transfer.update(params_pokemon)
-        format.html { redirect_to user_path(current_user), notice: 'Transfer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @transfer }
-      else
-        format.html { render :edit }
-        format.json { render json: @transfer.errors, status: :unprocessable_entity }
-      end
-    end
+    @transfer.update(params_transfer)
+    redirect_to user_path(current_user)
   end
 
   def destroy
-    @pokemon.destroy
+    @transfer.destroy
     redirect_to user_path(current_user)
   end
 
@@ -39,6 +32,6 @@ class TransfersController < ApplicationController
   end
 
   def params_transfer
-    params.require(:pokemon).permit(:date)
+    params.require(:transfer).permit(:date, :enemy_name, :enemy_type, :enemy_level, :outcome)
   end
 end

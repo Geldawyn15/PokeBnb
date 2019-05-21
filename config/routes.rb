@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :pokemons, only: %i[show edit update destroy]  do
-    resources :transfers, only: %i[create]
     collection do
       get :search
     end
+    resources :transfers, only: %i[create]
   end
   resources :transfers, only: %i[update destroy] do
     resources :reviews, only: %i[new create]

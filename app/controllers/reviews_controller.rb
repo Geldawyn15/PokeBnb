@@ -7,9 +7,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params_review)
-    @review.transfer_id = @transfer
+    @review.transfer_id = @transfer.id
     if @review.save!
-      redirect_to user_path(current_user)
+      redirect_to home
     else
       render :new
     end
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     @transfer = Transfer.find(params[:transfer_id])
   end
 
-  def params_pokemon
-    params.require(:pokemon).permit(:name, :poke_type, :anime_url, :image_url, :level)
+  def params_review
+    params.require(:review).permit(:comment, :rating)
   end
 end

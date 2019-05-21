@@ -1,6 +1,6 @@
 class PokemonsController < ApplicationController
   before_action :set_pokemon, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[new create]
+  before_action :set_user, only: %i[new create update]
 
   def index
     @pokemons = Pokemon.all
@@ -16,7 +16,7 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(params_pokemon)
-    @pokemon.professor_id = @user
+    @pokemon.professor_id = @user.id
     if @pokemon.save!
       redirect_to user_path(@user)
     else
@@ -28,15 +28,8 @@ class PokemonsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @pokemon.update(params_pokemon)
-        format.html { redirect_to @pokemon, notice: 'Pokemon was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pokemon }
-      else
-        format.html { render :edit }
-        format.json { render json: @pokemon.errors, status: :unprocessable_entity }
-      end
-    end
+    @pokemon.update(params_pokemon)
+    redirect_to user_path(@user)
   end
 
   def destroy
@@ -58,6 +51,6 @@ class PokemonsController < ApplicationController
   end
 
   def params_pokemon
-    params.require(:pokemon).permit(:comment, :rating)
+    params.require(:pokemon).permit(:name, :poke_type, :anime_url, :image_url, :level)
   end
 end
