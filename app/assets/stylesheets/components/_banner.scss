@@ -13,7 +13,7 @@
   position: absolute;
   top: 15%;
   left: 16%;
-  color: white;
+  color: #ff4949;
   font-size: 50px;
   font-weight: bold;
 }
@@ -30,4 +30,13 @@
   top: 50%;
   left: 30%;
 
+}
+
+.form-banner {
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: cover;
 }
