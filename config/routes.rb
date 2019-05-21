@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pokemons#index'
+  root to: 'pages#home'
   resources :pokemons, only: %i[show new create edit update delete]  do
     get :search
   end
