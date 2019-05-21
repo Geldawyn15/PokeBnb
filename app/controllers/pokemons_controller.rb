@@ -45,7 +45,24 @@ class PokemonsController < ApplicationController
   end
 
   def search
+    @search = params["search"]
+    query = []
 
+    if @search.present?
+      query << "name= '#{@search['name']}'" if @search["name"] != ''
+
+      query << "poke_type= '#{@search['type'].downcase.capitalize}'" if @search["type"] != ''
+
+      query << "level= '#{@search['level']}'" if @search["level"] != ''
+
+      @pokemons = Pokemon.where(query)
+
+      @pokemons = @pokemons.joins(:transfers).where("transfers.date = ?", @search['date'])if @search["date"] != ''
+
+
+    else
+      @pokemons = Pokemon.all
+    end
   end
 
   private
@@ -59,7 +76,7 @@ class PokemonsController < ApplicationController
   end
 
   def params_pokemon
-    params.require(:pokemon).permit(:name, :poke_type, :anime_url, :image_url, :level)
+    params.require(:pokemon).permit(:name, :poke_type, :anime_url, :image_url, :level, :search)
   end
 
   def api_pokemon_type
