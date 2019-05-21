@@ -31,3 +31,12 @@
   left: 30%;
 
 }
+
+.form-banner {
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: cover;
+}
