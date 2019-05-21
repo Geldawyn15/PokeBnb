@@ -1,0 +1,55 @@
+.wrapper1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 175px;
+  height: 50px;
+
+}
+
+.userinfo {
+  border-style: solid;
+  padding-right: 400px;
+  padding-top: 15px;
+}
+
+li {
+  list-style: none;
+  }
+
+.button-add {
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 34px;
+  margin-left: 400px;
+  width: 85px;
+  height: 85px;
+  background: #ff4949;
+  font: bold 13px Arial;
+  border-radius: 50%;
+  border: none;
+  color: #eeeeee;
+  transition-property: transform;
+  -webkit-transition-property: transform;
+  transition-duration: .5s;
+  transition-timing-function: ease-out;
+}
+
+.button-add:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+}
+
+
+.poke-cards {
+display: inline-flex;
+flex-direction: row;
+}
