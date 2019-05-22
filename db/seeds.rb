@@ -15,7 +15,7 @@ user_pic = ["https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369860/lflhc
   "https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369799/lbarmrxj2a34ejub5nbd.png"]
 
 e = 0
-4.times do
+12.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -23,11 +23,12 @@ e = 0
     image_url: user_pic[e]
     )
   e += 1
-  5.times do
+  6.times do
     i = rand(1..151).to_s
     html_content = open(url+i).read
     doc = JSON.parse(html_content)
     url_img = "https://www.pokemon.com/us/pokedex/#{doc['name'].downcase}"
+    p url_img
     page = open(url_img).read
     noko = Nokogiri::HTML.parse(page)
     img =  noko.search(".profile-images img").attribute('src').value
@@ -44,7 +45,7 @@ e = 0
   end
 end
 
-10.times do
+60.times do
   Transfer.create!(
     date: DateTime.now.next_day(rand(1..10)),
     pokemon: Pokemon.all.sample,
