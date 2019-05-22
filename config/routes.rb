@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'pokemons#index', as: 'home'
   resources :users, only: %i[show] do
-    resources :pokemons, only: %i[new create]
+    resources :pokemons, only: %i[new create update]
   end
 
   resources :pokemons, only: %i[index show edit update destroy]  do
