@@ -2,4 +2,10 @@
 .homecontainer {
  margin: 0 auto;
  width: 1400px;
+ display: flex;
+ justify-content: center;
+}
+
+.homesearchbar {
+  margin: 48px auto;
 }

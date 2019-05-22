@@ -16,25 +16,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: left;
 }
 
 .titre1 {
-  top: 15%;
-  left: 16%;
   color: #ff4949;
   font-size: 50px;
   font-weight: bold;
-}
-
-.btn1-banner {
-  top: 50%;
-  left: 16%;
-
-}
-
-.btn2-banner {
-  top: 50%;
-  left: 30%;
+  text-shadow: 1px 1px $gray;
 
 }
 
