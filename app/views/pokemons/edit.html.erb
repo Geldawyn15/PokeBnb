@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Pokemon Edit</title>
-  </head>
-  <body>
-    <h1>Pokemons#edit</h1>
-    <p>Find me in app/views/pokemons/edit.html.erb</p>
-  </body>
-</html>
+<div class="form-banner form-banner-pokemon">
+  <div class="container">
+    <div class="row">
+      <div class="form-text-container col-sm-12 col-md-6">
+        <h1 class="text-danger"><%= @pokemon.name.capitalize %> has leveled up</h1>
+        <p class="text-dark">Great news, your Pokemon has level up! Let's celebrate and update its profile.</p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="form-inputs">
+          <%= simple_form_for ([@user, @pokemon]) do |f|%>
+              <%= f.input :level, label:"What's it's new level?" %>
+              <%= f.submit "Go!", class: "button2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

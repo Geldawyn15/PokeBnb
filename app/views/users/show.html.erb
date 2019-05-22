@@ -16,17 +16,21 @@
 </div>
 
 <div class="wrapper2">
+
+  <h2> My Pokemons </h2>
   <div class="poke-cards">
-      <%= render '/shared/poke-card' %>
-      <%= render '/shared/poke-card' %>
-      <%= render '/shared/poke-card' %>
+    <% @user.owned_pokemons.each do |pokemon| %>
+      <% @pokemon = pokemon %>
+      <%= render '/shared/poke-card', object: @pokemon %>
+    <% end %>
   </div>
 
-  <h2> Transfert Cards </h2>
 
+  <h2> My transfers </h2>
   <div class="poke-cards">
-    <%= render '/shared/poke-card' %>
-    <%= render '/shared/poke-card' %>
-    <%= render '/shared/poke-card' %>
+    <% @user.transfers.each do |transfer| %>
+      <% @pokemon = Pokemon.find(transfer.pokemon_id) %>
+      <%= render '/shared/poke-card', object: @pokemon %>
+    <% end %>
   </div>
 </div>

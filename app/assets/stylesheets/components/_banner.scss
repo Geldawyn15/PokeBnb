@@ -39,16 +39,18 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-size: cover;
-  background-position: center;
 }
 
 .form-banner-sign {
-  background-image: asset-url('pokeball.jpg')
+  background-image: asset-url('pokeball.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .form-banner-pokemon {
-  background-image: asset-url('poke_create_form.png')
+  background-image: asset-url('poke_bg.png');
+  background-position: top 300p;
+  background-size: no-repeat;
 }
 
 
