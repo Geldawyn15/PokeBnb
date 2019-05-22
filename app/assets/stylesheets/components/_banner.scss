@@ -34,9 +34,25 @@
 
 .form-banner {
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: cover;
+  background-size: cover;
+  background-position: center;
 }
+
+.form-banner-sign {
+  background-image: asset-url('pokeball.jpg')
+}
+
+.form-banner-pokemon {
+  background-image: asset-url('poke_create_form.png')
+}
+
+
+
+
+
+
