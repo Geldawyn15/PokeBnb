@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Pokemon new</title>
-  </head>
-  <body>
-    <div class="form-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url('/assets/poke_create_form.png');">
-      <div class="form-text-container">
-        <h1>Create your Pokemon</h1>
-        <p>Add your Pokemon and transfer them to trainers so that they can battle and win level!</p>
-      </div>
+<div class="form-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url('/assets/poke_create_form.png');">
+  <div class="form-text-container">
+    <h1>Create your Pokemon</h1>
+    <p>Add your Pokemon and transfer them to trainers so that they can battle and win level!</p>
+  </div>
 
-      <div class="form-input-container">
-        <%= simple_form_for ([@user, @pokemon]) do |f|%>
-            <%= f.input :name, label:"Enter your Pokemon's name" %>
-            <%= f.input :level, label:"What's it's level?" %>
-            <%= f.submit "Go!", class: "button2" %>
-        <% end %>
-      </div>
-    </div>
-  </body>
-</html>
+  <div class="form-input-container">
+    <%= simple_form_for ([@user, @pokemon]) do |f|%>
+        <%= f.input :name, label:"Enter your Pokemon's name" %>
+        <%= f.input :level, label:"What's it's level?" %>
+        <%= f.submit "Go!", class: "button2" %>
+    <% end %>
+  </div>
+</div>
 
 
 
