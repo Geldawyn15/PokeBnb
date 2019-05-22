@@ -19,7 +19,7 @@ class Pokemon < ApplicationRecord
     'Steel',
     'Fairy'
   ]
-  belongs_to :professor, class_name: "User"
+  belongs_to :professor, class_name: "User", foreign_key: "professor_id"
   has_many :transfers
   has_many :reviews, through: :transfers
   validates :name, presence: true

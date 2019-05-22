@@ -12,9 +12,9 @@
   </head>
   <body>
     <%= render '/shared/navbar' %>
-    <%= render '/shared/transfer_page' %>
-
-    <%= yield %>
+    <div class="pad-top">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
