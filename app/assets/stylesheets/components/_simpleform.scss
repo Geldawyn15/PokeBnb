@@ -49,3 +49,9 @@
 .form-inputs {
   flex-grow: 1;
 }
+
+.simple_form_inline {
+  display: flex;
+  flex-flow: row !important;
+  align-items: center;
+}
