@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5 {
     padding: 1em;
     position: relative;
     border-radius: 0 0 3px 3px;
+    color: #000000;
   }
   &__image-container {
     background-color: rgba(#000000, 0.7);
@@ -167,6 +168,39 @@ h1, h2, h3, h4, h5 {
       background: #ff8a95;
     }
   }
+
+  &--poison {
+    background: linear-gradient(#352961, #774181, #e6b2c6);
+
+    .card__type {
+      background: #5E2D88;
+    }
+  }
+
+  &--flying {
+    background: linear-gradient(#00334e, #145374, #5588a3, #e8e8e8);
+
+    .card__type {
+      background: #00334e;
+    }
+  }
+
+  &--ground {
+    background: linear-gradient(#dfddc7, #f58b54, #a34a28);
+
+    .card__type {
+      background: #00334e;
+    }
+  }
+
+  &--bug {
+    background: linear-gradient(#21aa93, #ffc3e7, #01676b);
+
+    .card__type {
+      background: #00334e;
+    }
+  }
+
 
   position: relative;
   transition: 0.4s;
