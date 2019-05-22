@@ -8,9 +8,6 @@
   grid-template-rows: 49.7vw;
   align-items: center;
   justify-items: center;
-  background-image: url("http://www.maximumwall.com/wp-content/uploads/2016/07/fond-ecran-pokemon-go-02.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 @media (max-width: 992px) {
@@ -29,13 +26,6 @@
 .pokeimg {
   margin-top: 400px;
   grid-row: 1;
-  grid-column: 1;
-
-}
-
-.info {
-  text-align: center;
-  grid-row: 2;
   grid-column: 1;
 
 }
@@ -65,8 +55,4 @@
 .border-style {
   border-radius: 5%;
   border: 1px solid #eeeeee;
-}
-
-.background-image {
-
 }
