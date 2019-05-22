@@ -1,14 +1,55 @@
-.navbar {
-  background: #ff4949;
-  height: 60px;
-  text-align: right;
-}
-
-.log-in {
-  position: relative;
+.login {
   background-color: #eeeeee;
   color: #ff4949;
   border: none;
   border-radius: 5px;
-  margin-top: 16px;
+  font-weight: bold;
+}
+
+.logo {
+  height: 40px;
+}
+
+
+.navbar {
+  position: fixed;
+  width: 100vW;
+  z-index: 10;
+  background: #ff4949;
+  height: 60px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-button {
+  display: inline;
+}
+
+.nav-item {
+  color: #FFCD00;
+}
+
+.nav-item a {
+  color: white;
+  padding: 8px 16px;
+}
+
+.dropdown-item a {
+  color: #356ABD;
+}
+
+.dropdown-item:active {
+    color: #eeeeee;
+    text-decoration: none;
+    background-color: #356ABD;
 }

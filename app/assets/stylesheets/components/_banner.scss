@@ -5,38 +5,38 @@
 .banner {
   background-image: url("https://www.ubackground.com/_ph/4/164037540.jpg");
   background-position: center;
-  position: absolute;
-  height: 60%;
-  width: 100%;
-  overflow: hidden;
+  height: 60vh;
+  width: 100vw;
 }
 
 .titre1 {
   position: absolute;
   top: 15%;
   left: 16%;
-  color: white;
+  color: #ff4949;
   font-size: 50px;
+  font-weight: bold;
 }
 
-.button1 {
-  background-color: #eeeeee;
+.btn1-banner {
   position: absolute;
-  border: none;
-  border-radius: 5px;
   top: 50%;
   left: 16%;
-  padding: 10px 25px;
-  color: #ff4949;
+
 }
 
-.button2 {
-  background-color: #ff4949;
+.btn2-banner {
   position: absolute;
-  border: none;
-  border-radius: 5px;
   top: 50%;
   left: 30%;
-  padding: 10px 25px;
-  color: white;
+
+}
+
+.form-banner {
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: cover;
 }
