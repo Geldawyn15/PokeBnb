@@ -1,8 +1,13 @@
 <%= render '/shared/searchbar' %>
 
+<div class="container">
+  <div class="row">
 
-<ul>
-<% @pokemons.each do |pokemon| %>
-  <li><%= link_to pokemon.name, pokemon_path(pokemon) %></li>
-<% end %>
-</ul>
+  <% @pokemons.each do |pokemon| %>
+    <div class="mx-3 col-xs-12 col-sm-6 col-md-4">
+    <% @pokemon = pokemon %>
+      <%= render'/shared/poke-card', object: @pokemon %>
+    </div>
+  <% end %>
+  </div>
+</div>
