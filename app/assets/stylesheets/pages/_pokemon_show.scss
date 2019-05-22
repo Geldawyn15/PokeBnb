@@ -1,0 +1,58 @@
+.wrapper {
+  position: absolute;
+  width: 100vw;
+  top: 60px;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 49.7vw;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (max-width: 992px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.pokeimg {
+  margin-top: 400px;
+  grid-row: 1;
+  grid-column: 1;
+
+}
+
+.order-recap {
+  grid-column: 2;
+  grid-row: 1 / 2;
+
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  grid-column: 2;
+  grid-row: 2 / 2;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#contact {
+  margin-right: 8px;
+}
+
+
+.border-style {
+  border-radius: 5%;
+  border: 1px solid #eeeeee;
+}
