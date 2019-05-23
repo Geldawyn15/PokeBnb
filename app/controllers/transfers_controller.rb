@@ -19,9 +19,9 @@ class TransfersController < ApplicationController
   def update
     @transfer.update(params_transfer)
     @transfer.enemy_type = api_pokemon_type(@transfer.enemy_name)
-    if @transfer.outcome.downcase.include?("y") || transfer.outcome.downcase.include?("w")
+    if @transfer.outcome.downcase.include?("y") || @transfer.outcome.downcase.include?("w")
       @transfer.outcome = "win"
-    elsif @transfer.outcome.downcase.include?("n") || transfer.outcome.downcase.include?("l")
+    elsif @transfer.outcome.downcase.include?("n") || @transfer.outcome.downcase.include?("l")
       @transfer.outcome = "lose"
     else
       @transfer.outcome = nil
