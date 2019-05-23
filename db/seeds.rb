@@ -14,6 +14,34 @@ user_pic = ["https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369860/lflhc
   "https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369844/ezaaihedpmmn2jiu7fpl.png",
   "https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369799/lbarmrxj2a34ejub5nbd.png"]
 
+user = User.create!(
+    name: "Toto",
+    email: "randomemail@hotmail.fr",
+    password: "123456789"
+    )
+puts "Jonas account created"
+
+user = User.create!(
+    name: "Charlycade",
+    email: "randomemail@gmail.com",
+    password: "Carapuce29"
+    )
+puts "Charline's account created"
+
+user = User.create!(
+    name: "Anna Maverick",
+    email: "hatorianna13@gmail.com",
+    password: "Pokepoke"
+    )
+puts "Anna Maverick's account created"
+
+user = User.create!(
+    name: "totoman",
+    email: "fake@gmail.com",
+    password: "totoman"
+    )
+puts "Alex's account created"
+
 e = 0
 12.times do
   user = User.create!(
@@ -34,7 +62,6 @@ e = 0
       name = "nidoran-male"
     end
     url_img = "https://www.pokemon.com/us/pokedex/#{name}"
-    p url_img
     page = open(url_img).read
     noko = Nokogiri::HTML.parse(page)
     img =  noko.search(".profile-images img").attribute('src').value
@@ -55,6 +82,9 @@ e = 0
 
   end
 end
+
+puts "12 random users created"
+puts "72 Pokemons created.... hurray!"
 
 10.times do
   Transfer.create!(
@@ -114,3 +144,6 @@ end
     rating: rand(0..2),
   )
 end
+
+puts "40 transfers created"
+
