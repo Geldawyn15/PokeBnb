@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_140545) do
+ActiveRecord::Schema.define(version: 2019_05_23_152120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2019_05_20_140545) do
     t.bigint "professor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hp"
+    t.integer "attack"
+    t.integer "defense"
+    t.string "ability1"
+    t.string "ability2"
+    t.integer "height"
+    t.integer "weight"
     t.index ["professor_id"], name: "index_pokemons_on_professor_id"
   end
 
