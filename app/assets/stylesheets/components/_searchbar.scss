@@ -1,0 +1,17 @@
+
+.container-searchbar {
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar {
+    display: -webkit-box;
+}
+
+.form-group {
+    margin-right: 8px;
+  }
+
+.simple_form.searchbar {
+    max-width: unset;
+}
