@@ -1,19 +1,26 @@
-.button1 {
-  background-color: #eeeeee;
+.btn {
   border: none;
   border-radius: 5px;
   padding: 10px 25px;
-  color: #ff4949;
   font-weight: bold;
-   margin-right: 16px;
+  margin-right: 16px;
+}
+
+
+.button1 {
+  background-color: #eeeeee;
+  color: #ff4949;
 }
 
 .button2 {
   background-color: #ff4949;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 25px;
-  color: white;
-  font-weight: bold;
-  margin-right: 16px;
+  color: #eeeeee;
+}
+
+.button3 {
+  background-color: #ff4949;
+  color: #eeeeee;
+  padding: 7px;
+  margin-right: 0;
+  margin-bottom: 1rem;
 }
