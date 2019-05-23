@@ -19,18 +19,19 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(params_pokemon)
+    nidoran
     @pokemon.professor_id = @user.id
     @pokemon.poke_type = api_pokemon_type
+    @pokemon.save!
     @pokemon.image_url = api_pokemon_image
-    name = nidoran
-    if name.class == Integer
-      if name == 29
-        name = "nidoranf"
-      elsif name == 32
-        name = "nidoranm"
-      end
-    end
-    @pokemon.anime_url = "http://pokestadium.com/sprites/xy/#{name}.gif"
+    @pokemon.ability1 = api_pokemon_ability1
+    @pokemon.ability2 = api_pokemon_ability2
+    @pokemon.defense = api_pokemon_defense
+    @pokemon.attack = api_pokemon_attack
+    @pokemon.hp = api_pokemon_hp
+    @pokemon.height = api_pokemon_height
+    @pokemon.weight = api_pokemon_weight
+    @pokemon.anime_url = "http://pokestadium.com/sprites/xy/#{nidoran_sprite(nidoran)}.gif"
     if @pokemon.save!
       redirect_to user_path(@user)
     else
@@ -67,6 +68,8 @@ class PokemonsController < ApplicationController
 
   private
 
+  # SET USER AND POKEMON METHODS
+
   def set_pokemon
     @pokemon = Pokemon.find(params[:id])
   end
@@ -80,40 +83,85 @@ class PokemonsController < ApplicationController
     end
   end
 
+  # STRONG PARAMS
+
   def params_pokemon
     params.require(:pokemon).permit(:name, :poke_type, :anime_url, :image_url, :level, :search)
   end
 
-  def api_pokemon_type
+  # API POKEMON
+
+  def api_pokemon
     name = nidoran
-    p url = "https://pokeapi.co/api/v2/pokemon/#{name}"
+    url = "https://pokeapi.co/api/v2/pokemon/#{name}"
+    p url
     html_content = open(url).read
-    doc = JSON.parse(html_content)
-    doc['types'][0]['type']['name'].downcase.capitalize
+    JSON.parse(html_content)
   end
 
   def api_pokemon_image
     name = nidoran
-    if name.class == Integer
-      if name == 29
-        name = "nidoran-female"
-      elsif name == 32
-        name = "nidoran-male"
-      end
-    end
-    p url_img = "https://www.pokemon.com/us/pokedex/#{name}"
+
+    url_img = "https://www.pokemon.com/us/pokedex/#{name}"
     page = open(url_img).read
     noko = Nokogiri::HTML.parse(page)
     noko.search(".profile-images img").attribute('src').value
   end
 
+  def api_pokemon_type
+    api_pokemon['types'][0]['type']['name'].downcase.capitalize
+  end
+
+  def api_pokemon_ability1
+    api_pokemon["abilities"][0]["ability"]["name"]
+  end
+
+  def api_pokemon_ability2
+    if api_pokemon["abilities"][1]
+      api_pokemon["abilities"][1]["ability"]["name"]
+    else
+      "none"
+    end
+  end
+
+  def api_pokemon_hp
+    api_pokemon["stats"][5]["base_stat"]
+  end
+
+  def api_pokemon_defense
+    api_pokemon["stats"][3]["base_stat"]
+  end
+
+  def api_pokemon_attack
+    api_pokemon["stats"][4]["base_stat"]
+  end
+
+  def api_pokemon_height
+    api_pokemon["height"]
+  end
+
+  def api_pokemon_weight
+    api_pokemon["weight"]
+  end
+
+  # NIDORAN SPECIAL CASE
+
   def nidoran
     if params[:pokemon][:name].downcase == "nidoran"
       nido = [29, 32]
-      name = nido.sample
+      nido.sample
     else
-      name = params[:pokemon][:name].downcase
+      params[:pokemon][:name].downcase
     end
-    return name
+  end
+
+  def nidoran_sprite(nidoran)
+    if nidoran == 29
+      "nidoranf"
+    elsif nidoran == 32
+      "nidoranm"
+    else
+      params[:pokemon][:name].downcase
+    end
   end
 end
