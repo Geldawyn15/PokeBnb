@@ -1,15 +1,29 @@
-<div class="banner">
-  <h2 class="titre1"> Ready for the Pokemon League ? <br> Find the perfect Pokemon </h2>
-  <button class="button1 btn1-banner"> Find a Pokemon </button>
-  <button class="button2 btn2-banner"> Transfert your Pokemon </button>
+    <div class="banner">
+      <div class="title">
+        <h1 class="titre1"> Ready for the Pokemon League ? <br> Find the perfect Pokemon </h1>
+
+        <% if user_signed_in? %>
+        <%= link_to "Transfer your Pokemon", user_path(current_user.id), class: "button1 btn" %>
+        <% else %>
+        <%= link_to "Transfer your Pokemon", new_user_session_path, class: "button1 btn" %>
+        <% end %>
+        <%= link_to "Find a Pokemon", search_pokemons_path, class: "button2 btn" %>
+
+
+      </div>
+    </div>
+
+    <div class="homesearchbar">
+    <%= render '/shared/searchbar' %>
+    </div>
+
+<div class="homecontainer">
+  <% @pokemons.first(12).each do |pokemon| %>
+    <div>
+      <% @pokemon = pokemon %>
+      <%= link_to pokemon_path(pokemon.id) do %>
+      <%= render'/shared/poke-card', object: @pokemon %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-
-
-
-
-
-
-<%= render '/shared/searchbar' %>
-
-
