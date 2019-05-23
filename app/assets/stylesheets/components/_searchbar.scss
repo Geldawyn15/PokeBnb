@@ -4,21 +4,14 @@
   justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .searchbar {
+.searchbar {
     display: -webkit-box;
-    width: 900px;
-  }
-  .form-group {
+}
+
+.form-group {
     margin-right: 8px;
   }
 
-  .simple_form.searchbar {
-    width: 900px;
-  }
+.simple_form.searchbar {
+    max-width: unset;
 }
-
-
-
-
-

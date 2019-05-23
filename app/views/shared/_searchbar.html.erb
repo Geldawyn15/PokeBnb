@@ -1,11 +1,22 @@
 <div class="container container-searchbar">
 
   <%= simple_form_for :search, url: search_pokemons_path, method: "GET", html: { class: "searchbar" } do |f| %>
-    <%= f.input :name, label: false, input_html: {class: "form-control", id: "name", value: "", placeholder: "Name"} %>
-    <%= f.input :type, label: false, input_html: {class: "form-control", id: "type", value: "", placeholder: "Type"} %>
-    <%= f.input :level, label: false, input_html: {class: "form-control", id: "level", value: "", placeholder: "CP"} %>
-    <%= f.input :date, label: false, input_html: {class: "form-control", id: "date", value: "", placeholder: "DATE", type: "date"} %>
-    <%= f.submit "Poke search !", class: 'button3' %>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+          <%= f.input :name, label: false, input_html: {class: "form-control", id: "name", value: "", placeholder: "Name"} %>
+        </div>
+        <div class="col-auto">
+          <%= f.input :type, label: false, input_html: {class: "form-control", id: "type", value: "", placeholder: "Type"} %>
+        </div>
+        <div class="col-auto">
+          <%= f.input :level, label: false, input_html: {class: "form-control", id: "level", value: "", placeholder: "CP"} %>
+        </div>
+        <div class="col-auto">
+          <%= f.input :date, label: false, input_html: {class: "form-control", id: "date", value: "", placeholder: "DATE", type: "date"} %>
+        </div>
+        <div class="col-auto">
+          <%= f.submit "Poke search !", class: 'btn button3' %>
+        </div>
   <% end %>
 
 </div>
