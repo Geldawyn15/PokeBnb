@@ -1,24 +1,27 @@
 
 .transfer_bkg {
-  background-image: url('/assets/pokeball_transfer_bkg.jpg');
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding-top: 5vh;
+  width: 100%;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .joseph-toto {
-  color: white;
+  color: black;
+  position: absolute;
+  top: 15vh;
   font-size: 40px;
   font-weight: bolder;
+}
+.hidden {
+  visibility: hidden;
 }
 
 /* Adds a 1 second "wobble" animation that repeats 4 times. */
 .ball {
-  animation: wobble 1s linear 40;
+  animation: wobble 1s linear 1;
 /*  Helps transforms on svg animations work as intended  */
   transform-origin: 50% 100%;
   transform-box: fill-box;
@@ -26,7 +29,7 @@
 
 /* Adds a 1 second "flash" animation that repeats 4 times. */
 .button {
-  animation: flash 1s linear 40;
+  animation: flash 1s linear 1;
 }
 
 @keyframes wobble {
