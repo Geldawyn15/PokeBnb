@@ -1,11 +1,33 @@
 
 .homecontainer {
- margin: 0 auto;
- width: 1400px;
- display: flex;
- justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0 auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1400px) {
+  .homecontainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 990px) {
+  .homecontainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .homecontainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .homesearchbar {
   margin: 48px auto;
 }
+

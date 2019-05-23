@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_140545) do
+ActiveRecord::Schema.define(version: 2019_05_23_152120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,16 +24,14 @@ ActiveRecord::Schema.define(version: 2019_05_20_140545) do
     t.bigint "professor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hp"
+    t.integer "attack"
+    t.integer "defense"
+    t.string "ability1"
+    t.string "ability2"
+    t.integer "height"
+    t.integer "weight"
     t.index ["professor_id"], name: "index_pokemons_on_professor_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "transfer_id"
-    t.text "comment"
-    t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["transfer_id"], name: "index_reviews_on_transfer_id"
   end
 
   create_table "transfers", force: :cascade do |t|
@@ -46,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_140545) do
     t.string "outcome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rating"
+    t.text "comment"
     t.index ["pokemon_id"], name: "index_transfers_on_pokemon_id"
     t.index ["trainer_id"], name: "index_transfers_on_trainer_id"
   end
@@ -60,12 +60,12 @@ ActiveRecord::Schema.define(version: 2019_05_20_140545) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "pokemons", "users", column: "professor_id"
-  add_foreign_key "reviews", "transfers"
   add_foreign_key "transfers", "pokemons"
   add_foreign_key "transfers", "users", column: "trainer_id"
 end
