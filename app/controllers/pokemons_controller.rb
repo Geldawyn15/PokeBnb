@@ -74,6 +74,7 @@ class PokemonsController < ApplicationController
   def set_user
     if params[:user_id]
       @user = User.find(params[:user_id])
+
     elsif @pokemon
       @user = User.find(@pokemon.professor_id)
     end
