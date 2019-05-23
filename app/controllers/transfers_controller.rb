@@ -14,7 +14,6 @@ class TransfersController < ApplicationController
   end
 
   def update
-    @transfer.reviews.build
     @transfer.update(params_transfer)
     redirect_to user_path(current_user)
   end
@@ -38,7 +37,8 @@ class TransfersController < ApplicationController
                                      :enemy_type,
                                      :enemy_level,
                                      :outcome,
-                                     reviews_attributes: [:id, :comment, :rating])
+                                     :comment,
+                                     :rating)
   end
 end
 
