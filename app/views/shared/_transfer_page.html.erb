@@ -126,8 +126,9 @@
   setTimeout(explode, 5000);
 
   function plode(){
-    window.location.href = "<%= render user_path(current-user) %>";
+    let url = '<%= "/users/#{current_user.id}"  %>'
+    window.location.href = url;
   }
-  setTimeout(explode, 5000);
+  setTimeout(plode, 8000);
 </script>
 
