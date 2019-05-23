@@ -1,0 +1,24 @@
+
+.container-searchbar {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .searchbar {
+    display: -webkit-box;
+    width: 900px;
+  }
+  .form-group {
+    margin-right: 8px;
+  }
+
+  .simple_form.searchbar {
+    width: 900px;
+  }
+}
+
+
+
+
+
