@@ -1,20 +1,20 @@
-<figure class="poke-card card--electric">
+<figure class="card card--<%= @pokemon.poke_type.downcase %>">
   <div class="card__image-container">
-    <img src="https://cdn.bulbagarden.net/upload/thumb/1/17/025Pikachu-Original.png/600px-025Pikachu-Original.png" alt="Pikachu" class="card__image">
+    <img src="<%= @pokemon.anime_url %>" alt="Pikachu" class="card__image">
   </div>
 
   <figcaption class="card__caption">
-    <h1 class="card__name">Pikachu</h1>
+    <h1 class="card__name"><%= @pokemon.name.capitalize %></h1>
 
     <h3 class="card__type">
-      electric
+      <%= @pokemon.poke_type %>
     </h3>
 
     <table class="card__stats">
       <tbody>
         <tr>
           <th>Level</th>
-          <td>58</td>
+          <td><%= @pokemon.level %></td>
         </tr>
         <tr>
           <th>HP</th>
