@@ -1,15 +1,32 @@
-<div class="banner">
-  <h2 class="titre1"> Ready for the Pokemon League ? <br> Find the perfect Pokemon </h2>
-  <button class="button1 btn1-banner"> Find a Pokemon </button>
-  <button class="button2 btn2-banner"> Transfert your Pokemon </button>
+
+    <div class="banner">
+      <div class="title">
+        <h1 class="titre1"> Ready for the Pokemon League ? <br> Find the perfect Pokemon </h1>
+
+        <button class="button1"> Transfer your Pokemon </button>
+        <button class="button2"> Find a Pokemon </button>
+
+      </div>
+    </div>
+
+    <div class="homesearchbar">
+    <%= render '/shared/searchbar' %>
+    </div>
+
+<div class="homecontainer">
+  <div class="row">
+    <% @pokemons.each do |pokemon| %>
+      <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <% @pokemon = pokemon %>
+        <%= render'/shared/poke-card', object: @pokemon %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 
 
 
 
-
-
-<%= render '/shared/searchbar' %>
 
 
