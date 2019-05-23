@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Pokemon Profile</title>
-  </head>
-
-  <body>
-      <div class="wrapper">
-        <%= render '/shared/poke-card' %>
-        <div class="border-style">
-          <div class="order-recap">
-            <h2> Battle Date </h2>
-            <img class="calendar" src="https://camo.githubusercontent.com/c33bd566e42987638e084a8a7c4bbe3c16e0c23c/68747470733a2f2f636c2e6c792f6c517a422f53637265656e25323053686f74253230323031372d30372d3034253230617425323032322e30342e35392e706e67">
-          </div>
-          <div class="buttons">
-              <button class="btn button2" id="contact"> Contact <% link_to "", method: :post %> </button>
-              <button class="btn button2 "> Transfer <% link_to pokemon_transfers_path(@pokemon.id), method: :post %> </button>
-          </div>
-        </div>
+<div class="wrapper">
+  <%= render '/shared/page_pokemon_card' %>
+    <div class="border-style">
+      <div class="order-recap">
+        <h2> Battle Date </h2>
+        <%= simple_form_for :search, url: search_pokemons_path, method: "GET", html: { class: "" } do |f| %>
+        <%= f.input :date, label: false, input_html: {class: "calendar", id: "", value: "", placeholder: "DATE", type: "date"} %>
+        <% end %>
       </div>
-  </body>
-</html>
+     <div class="buttons">
+      <button class="btn button2" > Contact <% link_to "", method: :post %> </button>
+      <button class="btn button2" id="trasnfer"> Transfer <% link_to pokemon_transfers_path(@pokemon.id), method: :post %> </button>
+    </div>
+  </div>
+</div>

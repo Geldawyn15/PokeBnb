@@ -37,8 +37,6 @@
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-between;
   margin-top: 50px;
   grid-column: 2;
   grid-row: 2 / 2;
@@ -47,12 +45,14 @@
   margin-right: 8px;
 }
 
-#contact {
-  margin-right: 8px;
+#trasnfer {
+  margin-right: 0px;
 }
-
-
 .border-style {
   border-radius: 5%;
   border: 1px solid #eeeeee;
+}
+
+.calendar {
+  margin-top: 16px;
 }
