@@ -1,36 +1,49 @@
-<div class="wrapper1">
-  <div>
-    <img class="avatar" src="https://vignette.wikia.nocookie.net/pokemonworld/images/6/6b/Sacha.png/revision/latest?cb=20130515162819&path-prefix=fr" alt="avatar">
+<main>
+  <div class="banner-profile">
+  </div>
+  <div class="container icons">
+    <div>
+      <% if @user.image_url %>
+        <%= image_tag @user.image_url, class:"profile-icon" %>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/teepublic/image/private/s--gZejDXvz--/t_Resized%20Artwork/c_fit,g_north_west,h_1054,w_1054/co_ffffff,e_outline:53/co_ffffff,e_outline:inner_fill:53/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1545456398/production/designs/3597427_1.jpg", class:"profile-icon" %>
+      <% end %>
+    </div>
+    <div id="user-description">
+      <%= @user.name %>
+      <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere sapien interdum nisi finibus tincidunt. Pellentesque eget consectetur nibh. Sed id purus eget mauris ornare tempor. Sed nec lobortis odio, vel finibus libero. Vivamus sit amet sodales eros. Mauris quis auctor ex. Sed lacinia, dolor eu consequat ultrices, justo tellus sodales diam, eget accumsan nisi dui vitae nulla. Phasellus tincidunt sapien non lacus mollis vestibulum. Suspendisse auctor pellentesque maximus. Nullam congue molestie condimentum. Mauris consequat malesuada felis, mollis semper magna tempus aliquam. Suspendisse ut diam leo.</h6>
+    </div>
   </div>
 
-  <div class="userinfo">
-    <ul>
-      <li>Name : </li>
-      <li>Email : </li>
-    </ul>
+  <div class="wrapper2">
+    <div id="wrapper">
+        <div class="line"></div>
+        <div class="textbox">
+          <div class="text">MY POKEMONS
+          <%= link_to raw("<i class='fas fa-plus'></i>"), new_user_pokemon_path(current_user.id), class:"btn btn-danger btn-circle btn-lg" %>
+          </div>
+        </div>
+    </div>
+       <div class="poke-cards">
+        <% @user.owned_pokemons.each do |pokemon| %>
+        <% @pokemon = pokemon %>
+        <%= render '/shared/poke-card', object: @pokemon %>
+        <% end %>
+      </div>
   </div>
-</div>
-
-<div>
-  <button class="button-add"> ADD POKEMON </button>
-</div>
-
-<div class="wrapper2">
-
-  <h2> My Pokemons </h2>
-  <div class="poke-cards">
-    <% @user.owned_pokemons.each do |pokemon| %>
-      <% @pokemon = pokemon %>
-      <%= render '/shared/poke-card', object: @pokemon %>
-    <% end %>
+  <div class="wrapper2">
+    <div id="wrapper">
+        <div class="line"></div>
+        <div class="textbox">
+          <div class="text">MY TRANSFERS
+          <%= link_to raw("<i class='fas fa-plus'></i>"), search_pokemons_path, class:"btn btn-danger btn-circle btn-lg" %>
+          </div>
+        </div>
+      <div class="poke-cards">
+        <% @user.transfers.each do |transfer| %>
+        <% @pokemon = Pokemon.find(transfer.pokemon_id) %>
+        <%= render '/shared/poke-card', object: @pokemon %>
+        <% end %>
+        </div>
   </div>
-
-
-  <h2> My transfers </h2>
-  <div class="poke-cards">
-    <% @user.transfers.each do |transfer| %>
-      <% @pokemon = Pokemon.find(transfer.pokemon_id) %>
-      <%= render '/shared/poke-card', object: @pokemon %>
-    <% end %>
-  </div>
-</div>
+</main>
