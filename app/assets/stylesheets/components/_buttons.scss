@@ -1,4 +1,13 @@
 
+.btn {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+
 .button2 {
   position: absolute;
   background-color: #ff4949;
@@ -52,4 +61,15 @@
 
 .button1:hover::before {
   transform: translate(-50%, -50%) scale(15);
+=======
+  color: #eeeeee;
+}
+
+.button3 {
+  background-color: #ff4949;
+  color: #eeeeee;
+  padding: 7px;
+  margin-right: 0;
+  margin-bottom: 1rem;
+>>>>>>> 7624146ac1cc3de6e86347b3222a9930d1f3793a
 }

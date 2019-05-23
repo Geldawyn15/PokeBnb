@@ -1,2 +1,43 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="form-banner form-banner-review">
+  <div class="container">
+    <div class="row form2">
+      <div class="form-text-container col-sm-12 col-md-6">
+        <h1 class="text-danger">How did the transfer do?</h1>
+        <p class="text-dark">Let us know how was the transfer and the outcome of the battle! Your feedback is preicous and will help others!</p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="form-inputs">
+          <%= simple_form_for ([@transfer, @review]) do |f|%>
+              <%= f.input :name, label:"Enter your Pokemon's name" %>
+              <%= f.input :level, label:"What's it's level?" %>
+              <%= f.submit "Go!", class: "button2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+create_table "reviews", force: :cascade do |t|
+    t.bigint "transfer_id"
+    t.text "comment"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transfer_id"], name: "index_reviews_on_transfer_id"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.date "date", null: false
+    t.bigint "trainer_id", null: false
+    t.bigint "pokemon_id", null: false
+    t.string "enemy_name"
+    t.string "enemy_type"
+    t.integer "enemy_level"
+    t.string "outcome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pokemon_id"], name: "index_transfers_on_pokemon_id"
+    t.index ["trainer_id"], name: "index_transfers_on_trainer_id"
+  end
