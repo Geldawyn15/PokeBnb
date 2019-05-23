@@ -71,13 +71,25 @@ e = 0
     elsif i == '32'
       name = "nidoranm"
     end
+    if doc["abilities"][1]
+      ability2 = doc["abilities"][1]["ability"]["name"]
+    else
+      ability2 = "none"
+    end
     pokemon = Pokemon.create!(
       name: doc['name'].downcase.capitalize,
       poke_type: doc['types'][0]['type']['name'].downcase.capitalize,
       level: rand(1..100),
       image_url: img,
       anime_url:"http://pokestadium.com/sprites/xy/#{name}.gif",
-      professor_id: user.id
+      professor_id: user.id,
+      ability1: doc["abilities"][0]["ability"]["name"],
+      ability2: ability2,
+      hp: doc["stats"][5]["base_stat"],
+      defense: doc["stats"][3]["base_stat"],
+      attack: doc["stats"][4]["base_stat"],
+      height: doc["height"],
+      weight: doc["weight"]
       )
 
   end
@@ -146,4 +158,5 @@ end
 end
 
 puts "40 transfers created"
+
 

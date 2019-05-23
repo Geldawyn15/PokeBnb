@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2019_05_23_145018) do
     t.bigint "professor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hp"
+    t.integer "attack"
+    t.integer "defense"
+    t.string "ability1"
+    t.string "ability2"
+    t.integer "height"
+    t.integer "weight"
     t.index ["professor_id"], name: "index_pokemons_on_professor_id"
   end
 
