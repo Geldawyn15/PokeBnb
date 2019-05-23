@@ -18,15 +18,15 @@
         </tr>
         <tr>
           <th>HP</th>
-          <td>159</td>
+          <td><%= @pokemon.hp %></td>
         </tr>
         <tr>
           <th>Attack</th>
-          <td>154</td>
+          <td><%= @pokemon.attack%></td>
         </tr>
         <tr>
           <th>Defense</th>
-          <td>84</td>
+          <td><%= @pokemon.defense%></td>
         </tr>
       </tbody>
     </table>
@@ -34,11 +34,11 @@
     <div class="card__abilities">
       <h4 class="card__ability">
         <span class="card__label">Best ability #1</span>
-        Thunder
+        <%= @pokemon.ability1 %>
       </h4>
       <h4 class="card__ability">
         <span class="card__label">Best ability #2</span>
-        Thunderbolt
+        <%= @pokemon.ability2 %>
       </h4>
     </div>
 
@@ -49,11 +49,11 @@
         <tbody>
           <tr>
             <th>Height</th>
-            <td>1'04"</td>
+            <td><%= @pokemon.height %></td>
           </tr>
           <tr>
             <th>Weight</th>
-            <td>6.0 kg</td>
+            <td><%= @pokemon.weight %>kg</td>
           </tr>
           <tr>
             <th>From</th>

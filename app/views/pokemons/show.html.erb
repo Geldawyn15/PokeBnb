@@ -12,4 +12,12 @@
       <button class="btn button2" id="trasnfer"> Transfer <% link_to pokemon_transfers_path(@pokemon.id), method: :post %> </button>
     </div>
   </div>
+
+  <div class="review-container">
+    <p>Review : <% @pokemon.transfers.each {|transfer| transfer.rating}%>
+    <i class="fas fa-star"></i></p>
+    <p>Comment : <% @pokemon.transfers.each {|transfer| transfer.rating} %></p>
+  </div>
+
 </div>
+
