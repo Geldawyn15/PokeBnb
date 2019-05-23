@@ -15,3 +15,31 @@
   font-size: 40px;
   font-weight: bolder;
 }
+
+/* Adds a 1 second "wobble" animation that repeats 4 times. */
+.ball {
+  animation: wobble 1s linear 40;
+/*  Helps transforms on svg animations work as intended  */
+  transform-origin: 50% 100%;
+  transform-box: fill-box;
+}
+
+/* Adds a 1 second "flash" animation that repeats 4 times. */
+.button {
+  animation: flash 1s linear 40;
+}
+
+@keyframes wobble {
+  33% {
+    transform: rotate(-5deg)
+  }
+  66% {
+    transform: rotate(5deg)
+  }
+}
+
+@keyframes flash {
+  100% {
+    fill: rgba(255, 0, 0, 0.4)
+  }
+}

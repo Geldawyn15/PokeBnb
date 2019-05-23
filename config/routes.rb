@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     end
     resources :transfers, only: %i[create]
   end
-  resources :transfers, only: %i[update destroy] do
+  resources :transfers, only: %i[new update destroy] do
     resources :reviews, only: %i[new create]
   end
+
 end

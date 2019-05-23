@@ -59,7 +59,6 @@ class PokemonsController < ApplicationController
 
       @pokemons = @pokemons.joins(:transfers).where("transfers.date = ?", @search['date'])if @search["date"] != ''
 
-
     else
       @pokemons = Pokemon.all
     end
@@ -75,8 +74,8 @@ class PokemonsController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
     else
-    end
       @user = User.find(@pokemon.professor_id)
+    end
   end
 
   def params_pokemon
