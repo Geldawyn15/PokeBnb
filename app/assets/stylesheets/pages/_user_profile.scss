@@ -1,0 +1,98 @@
+main {
+  padding-bottom: 300px;
+
+h6 {
+  text-align: justify;
+  padding: 20px;
+  color: #2E2E2E;
+}
+
+
+.banner-profile {
+  width: 100%;
+  height: 400px;
+  background: url(https://i.imgur.com/iCU8kno.jpg)
+  center center no-repeat;
+  background-size: cover;
+}
+
+.icons {
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.profile-icon {
+  width: 160px;
+  height: 180px;
+  background-size: 140%;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-top: -90px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 2px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+#user-description {
+    color: #000000;
+    padding: 20px;
+    }
+
+
+.bio {
+    margin-bottom: 80px;
+    }
+}
+
+.wrapper2 {
+  padding: 20px;
+}
+
+#wrapper {
+  text-align: center;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+#wrapper .line {
+  border-bottom: 2px solid lightgray;
+  position: absolute;
+  width: 100%;
+  top: 15px;
+}
+
+#wrapper .textbox {
+  position: absolute;
+  width: 100%;
+}
+
+#wrapper .textbox .text {
+  background-color: white;
+  margin: 0px auto;
+  padding: 0px 10px;
+  text-align: center;
+  display: inline;
+  font-size: 24px;
+  color: #000000
+}
+
