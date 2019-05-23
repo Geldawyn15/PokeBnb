@@ -54,20 +54,13 @@ class PokemonsController < ApplicationController
   def search
     @search = params["search"]
     query = []
-
     if @search.present?
       query << "name= '#{@search['name']}'" if @search["name"] != ''
-
       query << "poke_type= '#{@search['type'].downcase.capitalize}'" if @search["type"] != ''
-
       query << "level= '#{@search['level']}'" if @search["level"] != ''
-
       @pokemons = Pokemon.where(query)
-
       @pokemons = @pokemons.joins(:transfers).where("transfers.date = ?", @search['date'])if @search["date"] != ''
-
-
-   else
+    else
       @pokemons = Pokemon.all
     end
   end

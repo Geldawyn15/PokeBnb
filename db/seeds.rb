@@ -14,6 +14,34 @@ user_pic = ["https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369860/lflhc
   "https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369844/ezaaihedpmmn2jiu7fpl.png",
   "https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369799/lbarmrxj2a34ejub5nbd.png"]
 
+user = User.create!(
+    name: "Toto",
+    email: "randomemail@hotmail.fr",
+    password: "123456789"
+    )
+puts "Jonas account created"
+
+user = User.create!(
+    name: "Charlycade",
+    email: "randomemail@gmail.com",
+    password: "Carapuce29"
+    )
+puts "Charline's account created"
+
+user = User.create!(
+    name: "Anna Maverick",
+    email: "hatorianna13@gmail.com",
+    password: "Pokepoke"
+    )
+puts "Anna Maverick's account created"
+
+user = User.create!(
+    name: "totoman",
+    email: "fake@gmail.com",
+    password: "totoman"
+    )
+puts "Alex's account created"
+
 e = 0
 12.times do
   user = User.create!(
@@ -49,7 +77,7 @@ e = 0
       ability2 = "none"
     end
     pokemon = Pokemon.create!(
-      name: doc['name'],
+      name: doc['name'].downcase.capitalize,
       poke_type: doc['types'][0]['type']['name'].downcase.capitalize,
       level: rand(1..100),
       image_url: img,
@@ -67,14 +95,68 @@ e = 0
   end
 end
 
-60.times do
+puts "12 random users created"
+puts "72 Pokemons created.... hurray!"
+
+10.times do
   Transfer.create!(
     date: DateTime.now.next_day(rand(1..10)),
     pokemon: Pokemon.all.sample,
     trainer: User.all.sample
-    )
+  )
 end
 
+10.times do
+  j = rand(1..151).to_s
+  html_content = open(url+j).read
+  doc = JSON.parse(html_content)
+  Transfer.create!(
+    date: DateTime.now.next_day(rand(1..10)),
+    pokemon: Pokemon.all.sample,
+    trainer: User.all.sample,
+    enemy_name: doc['name'].downcase.capitalize,
+    enemy_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    enemy_level: rand(1..100),
+    outcome: "win",
+    comment: ["It was a great battle", "Love xoxo", "Enjoyed it, let's do it another time", "Best time ever"].sample,
+    rating: rand(4..5),
+  )
+end
 
+10.times do
+  j = rand(1..151).to_s
+  html_content = open(url+j).read
+  doc = JSON.parse(html_content)
+  Transfer.create!(
+    date: DateTime.now.next_day(rand(1..10)),
+    pokemon: Pokemon.all.sample,
+    trainer: User.all.sample,
+    enemy_name: doc['name'].downcase.capitalize,
+    enemy_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    enemy_level: rand(1..100),
+    outcome: ["win", "lose"].sample,
+    comment: ["It was not a great battle. Anyway, we'll be luckier the next time.", "Not sure we'll do it again", "Not that great. I had such an hard time."].sample,
+    rating: rand(2..3),
+  )
+end
+
+10.times do
+  j = rand(1..151).to_s
+  html_content = open(url+j).read
+  doc = JSON.parse(html_content)
+  Transfer.create!(
+    date: DateTime.now.next_day(rand(1..10)),
+    pokemon: Pokemon.all.sample,
+    trainer: User.all.sample,
+    enemy_name: doc['name'].downcase.capitalize,
+    enemy_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    enemy_level: rand(1..100),
+    outcome: "lose",
+    comment: ["It sucked. Hate your pokemon, you're dead to me", "Not the best battle ever. Pokemon was not good", "We lose, that's the first time it ever happened too me. Your Pokemon is sooo bad"].sample,
+    rating: rand(0..2),
+  )
+end
+
+puts "40 transfers created"
 
 
