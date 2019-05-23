@@ -1,3 +1,4 @@
+
 .btn {
   border: none;
   border-radius: 5px;
@@ -6,14 +7,79 @@
   margin-right: 16px;
 }
 
-
 .button1 {
-  background-color: #eeeeee;
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+  overflow: hidden;
+  transition: color 0.4s ease-in-out;
   color: #ff4949;
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+.button1::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #ff4949;
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.45s ease-in-out;
+}
+
+.button1:hover {
+  cursor: pointer;
+  color: #eeeeee;
+}
+
+.button1:hover::before {
+  transform: translate(-50%, -50%) scale(15);
+  color: #eeeeee;
 }
 
 .button2 {
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+  overflow: hidden;
+  transition: color 0.4s ease-in-out;
+  color: #eeeeee;
+  text-decoration: none;
   background-color: #ff4949;
+}
+
+.button2::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.45s ease-in-out;
+}
+
+.button2:hover {
+  cursor: pointer;
+  color: #ff4949;
+}
+
+.button2:hover::before {
+  transform: translate(-50%, -50%) scale(15);
   color: #eeeeee;
 }
 
@@ -23,4 +89,5 @@
   padding: 7px;
   margin-right: 0;
   margin-bottom: 1rem;
+
 }

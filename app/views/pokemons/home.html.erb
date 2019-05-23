@@ -2,8 +2,10 @@
       <div class="title">
         <h1 class="titre1"> Ready for the Pokemon League ? <br> Find the perfect Pokemon </h1>
 
-        <button class="btn button1"> Transfer your Pokemon </button>
-        <button class="btn button2"> Find a Pokemon </button>
+
+        <%= link_to "Transfer your Pokemon", user_path(current_user.id), class: "button1 btn" %>
+
+        <%= link_to "Find a Pokemon", search_pokemons_path, class: "button2 btn" %>
 
       </div>
     </div>
