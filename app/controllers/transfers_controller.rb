@@ -14,6 +14,7 @@ class TransfersController < ApplicationController
   end
 
   def update
+    @transfer.reviews.build
     @transfer.update(params_transfer)
     redirect_to user_path(current_user)
   end
@@ -32,6 +33,18 @@ class TransfersController < ApplicationController
   end
 
   def params_transfer
-    params.require(:transfer).permit(:date, :enemy_name, :enemy_type, :enemy_level, :outcome)
+    params.require(:transfer).permit(:date,
+                                     :enemy_name,
+                                     :enemy_type,
+                                     :enemy_level,
+                                     :outcome,
+                                     reviews_attributes: [:id, :comment, :rating])
   end
 end
+
+
+def cocktail_params
+    params.require(:cocktail)
+          .permit(:name,
+                  )
+  end
