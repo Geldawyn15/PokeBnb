@@ -34,7 +34,7 @@ e = 0
     img =  noko.search(".profile-images img").attribute('src').value
 
     pokemon = Pokemon.create!(
-      name: doc['name'],
+      name: doc['name'].downcase.capitalize,
       poke_type: doc['types'][0]['type']['name'].downcase.capitalize,
       level: rand(1..100),
       image_url: img,
@@ -45,11 +45,61 @@ e = 0
   end
 end
 
-60.times do
+10.times do
   Transfer.create!(
     date: DateTime.now.next_day(rand(1..10)),
     pokemon: Pokemon.all.sample,
     trainer: User.all.sample
-    )
+  )
 end
 
+10.times do
+  j = rand(1..151).to_s
+  html_content = open(url+j).read
+  doc = JSON.parse(html_content)
+  Transfer.create!(
+    date: DateTime.now.next_day(rand(1..10)),
+    pokemon: Pokemon.all.sample,
+    trainer: User.all.sample,
+    enemy_name: doc['name'].downcase.capitalize,
+    enemy_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    enemy_level: rand(1..100),
+    outcome: "win",
+    comment: ["It was a great battle", "Love xoxo", "Enjoyed it, let's do it another time", "Best time ever"].sample,
+    rating: rand(4..5),
+  )
+end
+
+10.times do
+  j = rand(1..151).to_s
+  html_content = open(url+j).read
+  doc = JSON.parse(html_content)
+  Transfer.create!(
+    date: DateTime.now.next_day(rand(1..10)),
+    pokemon: Pokemon.all.sample,
+    trainer: User.all.sample,
+    enemy_name: doc['name'].downcase.capitalize,
+    enemy_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    enemy_level: rand(1..100),
+    outcome: ["win", "lose"].sample,
+    comment: ["It was not a great battle. Anyway, we'll be luckier the next time.", "Not sure we'll do it again", "Not that great. I had such an hard time."].sample,
+    rating: rand(2..3),
+  )
+end
+
+10.times do
+  j = rand(1..151).to_s
+  html_content = open(url+j).read
+  doc = JSON.parse(html_content)
+  Transfer.create!(
+    date: DateTime.now.next_day(rand(1..10)),
+    pokemon: Pokemon.all.sample,
+    trainer: User.all.sample,
+    enemy_name: doc['name'].downcase.capitalize,
+    enemy_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    enemy_level: rand(1..100),
+    outcome: "lose",
+    comment: ["It sucked. Hate your pokemon, you're dead to me", "Not the best battle ever. Pokemon was not good", "We lose, that's the first time it ever happened too me. Your Pokemon is sooo bad"].sample,
+    rating: rand(0..2),
+  )
+end
