@@ -27,18 +27,29 @@ e = 0
     i = rand(1..151).to_s
     html_content = open(url+i).read
     doc = JSON.parse(html_content)
-    url_img = "https://www.pokemon.com/us/pokedex/#{doc['name'].downcase}"
+    name = doc['name'].downcase
+    if i == '29'
+      name = "nidoran-female"
+    elsif i == '32'
+      name = "nidoran-male"
+    end
+    url_img = "https://www.pokemon.com/us/pokedex/#{name}"
     p url_img
     page = open(url_img).read
     noko = Nokogiri::HTML.parse(page)
     img =  noko.search(".profile-images img").attribute('src').value
 
+    if i == '29'
+      name = "nidoranf"
+    elsif i == '32'
+      name = "nidoranm"
+    end
     pokemon = Pokemon.create!(
       name: doc['name'],
       poke_type: doc['types'][0]['type']['name'].downcase.capitalize,
       level: rand(1..100),
       image_url: img,
-      anime_url:"http://pokestadium.com/sprites/xy/#{doc['name'].downcase}.gif",
+      anime_url:"http://pokestadium.com/sprites/xy/#{name}.gif",
       professor_id: user.id
       )
 
