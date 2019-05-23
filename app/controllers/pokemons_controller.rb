@@ -23,7 +23,7 @@ class PokemonsController < ApplicationController
     @pokemon.professor_id = @user.id
     @pokemon.poke_type = api_pokemon_type
     @pokemon.image_url = api_pokemon_image
-    @pokemon.anime_url = "http://pokestadium.com/sprites/xy/#{params[:pokemon][:name]}.gif"
+    @pokemon.anime_url = "http://pokestadium.com/sprites/xy/#{params[:pokemon][:name].downcase}.gif"
     if @pokemon.save!
       redirect_to user_path(@user)
     else
