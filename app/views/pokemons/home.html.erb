@@ -2,10 +2,13 @@
       <div class="title">
         <h1 class="titre1"> Ready for the Pokemon League ? <br> Find the perfect Pokemon </h1>
 
-
+        <% if user_signed_in? %>
         <%= link_to "Transfer your Pokemon", user_path(current_user.id), class: "button1 btn" %>
-
+        <% else %>
+        <%= link_to "Transfer your Pokemon", new_user_session_path, class: "button1 btn" %>
+        <% end %>
         <%= link_to "Find a Pokemon", search_pokemons_path, class: "button2 btn" %>
+
 
       </div>
     </div>
@@ -15,7 +18,7 @@
     </div>
 
 <div class="homecontainer">
-  <% @pokemons.each do |pokemon| %>
+  <% @pokemons.first(12).each do |pokemon| %>
     <div>
       <% @pokemon = pokemon %>
       <%= render'/shared/poke-card', object: @pokemon %>
