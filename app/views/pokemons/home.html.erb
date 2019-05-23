@@ -21,7 +21,9 @@
   <% @pokemons.first(12).each do |pokemon| %>
     <div>
       <% @pokemon = pokemon %>
+      <%= link_to pokemon_path(pokemon.id) do %>
       <%= render'/shared/poke-card', object: @pokemon %>
+      <% end %>
     </div>
   <% end %>
 </div>
