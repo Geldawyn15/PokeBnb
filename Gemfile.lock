@@ -224,8 +224,10 @@ DEPENDENCIES
   dotenv-rails
   faker
   ffi (~> 1.11, >= 1.11.0)
+
   font-awesome-sass (~> 5.8.1)
   font-awesome-rails
+
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   nokogiri
