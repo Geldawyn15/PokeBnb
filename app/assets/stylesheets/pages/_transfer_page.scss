@@ -1,4 +1,4 @@
-$headers-font: "Raleway", "Helvetica", "sans-serif";
+
 
 .transfer_bkg {
   padding-top: 5vh;
@@ -10,8 +10,8 @@ $headers-font: "Raleway", "Helvetica", "sans-serif";
 }
 
 .joseph-toto {
-  font-family: $headers-font
-  color: black;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  color: $danger;
   position: absolute;
   top: 15vh;
   font-size: 40px;
@@ -23,7 +23,7 @@ $headers-font: "Raleway", "Helvetica", "sans-serif";
 
 /* Adds a 1 second "wobble" animation that repeats 4 times. */
 .ball {
-  animation: wobble 1s linear 5;
+  animation: wobble 1s linear 3;
 /*  Helps transforms on svg animations work as intended  */
   transform-origin: 50% 100%;
   transform-box: fill-box;
@@ -31,7 +31,7 @@ $headers-font: "Raleway", "Helvetica", "sans-serif";
 
 /* Adds a 1 second "flash" animation that repeats 4 times. */
 .button {
-  animation: flash 1s linear 5;
+  animation: flash 1s linear 3;
 }
 
 @keyframes wobble {
