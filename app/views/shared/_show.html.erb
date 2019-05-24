@@ -1,0 +1,53 @@
+<figure class="card card--<%= @pokemon.poke_type.downcase %>">
+  <div class="card__image-container">
+    <img src="<%= @pokemon.anime_url %>" alt="Pikachu" class="card__image">
+  </div>
+
+  <figcaption class="card__caption">
+    <h1 class="card__name"><%= @pokemon.name.capitalize %></h1>
+
+    <h3 class="card__type">
+      <%= @pokemon.poke_type %>
+    </h3>
+
+    <table class="card__stats">
+      <tbody>
+          <th>Level</th>
+          <td><%= @pokemon.level %></td>
+        </tr>
+        <tr>
+          <tr>
+          <th>Date</th>
+          <td> <%= transfer.date %></td>
+        </tr>
+        <% if transfer.enemy_name.nil? %>
+        <tr><%= link_to 'Submit review', edit_user_transfer_path(current_user, transfer), method: :get %></tr>
+        <% else %>
+        <tr>
+          <th>Enemy name</th>
+          <td><%= transfer.enemy_name%></td>
+        </tr>
+        <tr>
+          <th>Enemy Type</th>
+          <td><%= transfer.enemy_type%></td>
+        </tr>
+        <tr>
+          <th>Enemy Level</th>
+          <td><%= transfer.enemy_level%></td>
+        </tr>
+         <tr>
+          <th>Battle Outcome</th>
+          <td><%= transfer.outcome%></td>
+        </tr>
+        <tr>
+        </tr>
+         <tr>
+          <th>Rating</th>
+          <td><%= transfer.rating%></td>
+        </tr>
+        <tr>
+        <% end %>
+      </tbody>
+    </table>
+</figure>
+

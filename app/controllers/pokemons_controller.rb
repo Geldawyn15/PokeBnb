@@ -60,7 +60,7 @@ class PokemonsController < ApplicationController
       query << "name ILIKE '\%#{@search['name']}\%'" if @search["name"] != ''
       query << "poke_type ILIKE '\%#{@search['type'].downcase.capitalize}\%'" if @search["type"] != ''
       query << "level = '#{@search['level']}'" if @search["level"] != ''
-      query = query.join(",")
+      query = query.join(" OR ")
       @pokemons = Pokemon.where(query)
       @pokemons = @pokemons.joins(:transfers).where("transfers.date = ?", @search['date']) if @search["date"] != ''
     else

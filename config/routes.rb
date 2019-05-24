@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pokemons#index', as: 'home'
   resources :users, only: %i[show update] do
     resources :pokemons, only: %i[new create update]
+      resources :transfers, only: %i[edit]
   end
 
   resources :pokemons, only: %i[index show edit update destroy]  do
@@ -12,5 +13,5 @@ Rails.application.routes.draw do
     end
     resources :transfers, only: %i[new create]
   end
-  resources :transfers, only: %i[edit update destroy]
+  resources :transfers, only: %i[update destroy]
 end
