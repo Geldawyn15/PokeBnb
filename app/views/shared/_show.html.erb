@@ -21,7 +21,7 @@
           <td> <%= transfer.date %></td>
         </tr>
         <% if transfer.enemy_name.nil? %>
-        <tr><%= link_to 'Submit review', edit_transfer_path(transfer), method: :get %></tr>
+        <tr><%= link_to 'Submit review', edit_user_transfer_path(current_user, transfer), method: :get %></tr>
         <% else %>
         <tr>
           <th>Enemy name</th>
@@ -38,6 +38,12 @@
          <tr>
           <th>Battle Outcome</th>
           <td><%= transfer.outcome%></td>
+        </tr>
+        <tr>
+        </tr>
+         <tr>
+          <th>Rating</th>
+          <td><%= transfer.rating%></td>
         </tr>
         <tr>
         <% end %>
