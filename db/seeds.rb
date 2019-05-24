@@ -7,7 +7,7 @@ Pokemon.destroy_all
 User.destroy_all
 
 
-url = 'https://pokeapi.co/api/v2/pokemon/'
+URL = 'https://pokeapi.co/api/v2/pokemon/'
 
 user_pic = ["https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369860/lflhcyfjyv7jabnpvkc5.png",
   "https://res.cloudinary.com/dsl8lc89k/image/upload/v1558369852/pc6zjnesaanyyiummpq6.png",
@@ -28,12 +28,7 @@ user = User.create!(
     )
 puts "Charline's account created"
 
-user = User.create!(
-    name: "Anna Maverick",
-    email: "hatorianna13@gmail.com",
-    password: "Pokepoke"
-    )
-puts "Anna Maverick's account created"
+
 
 user = User.create!(
     name: "totoman",
@@ -41,6 +36,14 @@ user = User.create!(
     password: "totoman"
     )
 puts "Alex's account created"
+
+def rand_num
+  rand(1..151).to_s
+end
+def get_api(i)
+  html_content = open(URL+i).read
+  return JSON.parse(html_content)
+end
 
 e = 0
 12.times do
@@ -52,9 +55,8 @@ e = 0
     )
   e += 1
   6.times do
-    i = rand(1..151).to_s
-    html_content = open(url+i).read
-    doc = JSON.parse(html_content)
+    i = rand_num
+    doc = get_api(i)
     name = doc['name'].downcase
     if i == '29'
       name = "nidoran-female"
@@ -90,8 +92,7 @@ e = 0
       attack: doc["stats"][4]["base_stat"],
       height: doc["height"],
       weight: doc["weight"]
-      )
-
+    )
   end
 end
 
@@ -107,9 +108,8 @@ puts "72 Pokemons created.... hurray!"
 end
 
 10.times do
-  j = rand(1..151).to_s
-  html_content = open(url+j).read
-  doc = JSON.parse(html_content)
+  i = rand_num
+  doc = get_api(i)
   Transfer.create!(
     date: DateTime.now.next_day(rand(1..10)),
     pokemon: Pokemon.all.sample,
@@ -124,9 +124,8 @@ end
 end
 
 10.times do
-  j = rand(1..151).to_s
-  html_content = open(url+j).read
-  doc = JSON.parse(html_content)
+  i = rand_num
+  doc = get_api(i)
   Transfer.create!(
     date: DateTime.now.next_day(rand(1..10)),
     pokemon: Pokemon.all.sample,
@@ -141,9 +140,8 @@ end
 end
 
 10.times do
-  j = rand(1..151).to_s
-  html_content = open(url+j).read
-  doc = JSON.parse(html_content)
+  i = rand_num
+  doc = get_api(i)
   Transfer.create!(
     date: DateTime.now.next_day(rand(1..10)),
     pokemon: Pokemon.all.sample,
@@ -158,5 +156,50 @@ end
 end
 
 puts "40 transfers created"
+
+
+user = User.create!(
+    name: "Anna Maverick",
+    email: "hatorianna13@gmail.com",
+    password: "Pokepoke"
+    )
+puts "Anna Maverick's account created"
+
+def anna_create(i, user)
+  html_content = open(URL+i.to_s).read
+  doc = JSON.parse(html_content)
+  name = doc['name'].downcase
+  url_img = "https://www.pokemon.com/us/pokedex/#{name}"
+  page = open(url_img).read
+  noko = Nokogiri::HTML.parse(page)
+  img =  noko.search(".profile-images img").attribute('src').value
+
+  if doc["abilities"][1]
+    ability2 = doc["abilities"][1]["ability"]["name"]
+  else
+    ability2 = "none"
+  end
+  pokemon = Pokemon.create!(
+    name: name.capitalize,
+    poke_type: doc['types'][0]['type']['name'].downcase.capitalize,
+    level: rand(55..100),
+    image_url: img,
+    anime_url:"http://pokestadium.com/sprites/xy/#{name}.gif",
+    professor_id: user.id,
+    ability1: doc["abilities"][0]["ability"]["name"],
+    ability2: ability2,
+    hp: doc["stats"][5]["base_stat"],
+    defense: doc["stats"][3]["base_stat"],
+    attack: doc["stats"][4]["base_stat"],
+    height: doc["height"],
+    weight: doc["weight"]
+    )
+end
+
+anna_create(59, user)
+anna_create(136, user)
+anna_create(6, user)
+
+
 
 
