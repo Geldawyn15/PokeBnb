@@ -10,12 +10,11 @@ gem 'redis'
 gem 'ffi', '~> 1.11', '>= 1.11.0'
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.8.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

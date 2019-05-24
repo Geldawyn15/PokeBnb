@@ -11,6 +11,7 @@ class PokemonsController < ApplicationController
   end
 
   def show
+    @transfer = Transfer.new
   end
 
   def new
@@ -19,7 +20,7 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(params_pokemon)
-    nidoran
+    @pokemon.name = nidoran
     @pokemon.professor_id = @user.id
     @pokemon.poke_type = api_pokemon_type
     @pokemon.save!
