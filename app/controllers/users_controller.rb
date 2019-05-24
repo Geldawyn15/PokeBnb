@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(params)
+    @user.update_without_password(user_params)
     redirect_to user_path(current_user.id)
   end
 
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params(:user).permit(:description)
+    params.require(:user).permit(:description)
   end
 end
