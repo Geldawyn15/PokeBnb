@@ -14,15 +14,8 @@
     </div>
       </%>
       <div class="bio">
-        <%= simple_form_for @user, html: { class: "form-bio" }, url: user_path(current_user.id), method: :PATCH do |f| %>
-              <%= f.input :description, label: false, placeholder: "What about you ?", class:"text-black" %>
-              <div class="btn-bio" >
-            <%= f.submit "Submit", class: "btn button2"  %>
-            </div>
-        <% end %>
-
+        <p>I'm a Pokemon trainer since 2013, my specialiaty are Fire type Pokemon. After I won the 8 badges, I'm ready for the Indigo League.</p>
       </div>
-<h4>desc : <%= @user.description %></h4>
     </div>
   </div>
 
