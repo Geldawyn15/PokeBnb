@@ -60,27 +60,28 @@
         </div>
       </div>
 
-
       <% reviews = @pokemon.transfers.map { |transfer| !transfer.nil? }  %>
-      <% ratings = @pokemon.transfers.sum { |transfer| transfer.rating }  %>
+      <% ratings = @pokemon.transfers.map { |transfer| transfer.rating }  %>
 
-      <% unless reviews.empty? || ratings = 0 %>
+      <% unless reviews.empty? %>
         <div class="review-section">
           <%= render 'shared/separator', title: 'REVIEWS', score: @pokemon.transfers.count %>
           <div class="review-container">
             <% @pokemon.transfers.each do |transfer| %>
-              <p>REVIEW
-              <% transfer.rating.times do %>
-                <i class="fas fa-star"></i>
-              <% end %></p>
-              <p>COMMENT</p>
-              <p><%= transfer.comment %></p>
+              <% if !transfer.rating.nil? %>
+                <p>REVIEW
+                <% transfer.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %></p>
+                <p>COMMENT</p>
+                <p><%= transfer.comment %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
 
-      <% if @pokemon.transfers.empty? %>
+      <% if !@pokemon.transfers.empty? %>
         <div class="transfer-section">
           <%= render 'shared/separator', title: 'TRANSFERS', score: @pokemon.transfers.count %>
           <div class="transfer-container">
