@@ -11,6 +11,7 @@ class PokemonsController < ApplicationController
   end
 
   def show
+    @transfer = Transfer.new
   end
 
   def new

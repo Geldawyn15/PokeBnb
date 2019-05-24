@@ -5,77 +5,94 @@
 
       <div class="booking-box">
         <h2> Book <%= @pokemon.name %> </h2>
-        <%= simple_form_for :search, url: search_pokemons_path, method: "GET", html: { class: "" } do |f| %>
-        <%= f.input :date, label: false, input_html: {class: "calendar", id: "", value: "", placeholder: "DATE", type: "date"} %>
+        <%= simple_form_for [@pokemon, @transfer] do |f| %>
+          <%= f.input :date, as: :date, html5: true %>
+          <%= f.submit "Transfer", :class=>"btn button2" %>
+          <%= link_to "Contact", "#", :class=>"btn button1" %>
         <% end %>
-        <%= link_to "Contact", user_path(@pokemon.professor_id), method: :post, :class=>"btn button1" %>
-        <%= link_to "Transfer", pokemon_transfers_path(@pokemon.id), method: :post, :class=>"btn button2" %>
       </div>
 
-      <div class="stats-container">
-        <h2><%= @pokemon.name.capitalize %>'s stats</h2>
-        <div class="stats">
-          <div class = "stats-details">
-            <p>Number </br>of transfers</p>
-            <p class="stats-number"><%= @pokemon.transfers.count %></p>
-          </div>
-          <div class = "stats-details">
-            <p>Percentage </br>of win</p>
+        <div class="stats-container">
+          <h2><%= @pokemon.name.capitalize %>'s stats</h2>
+          <div class="stats">
+            <div class = "stats-details">
+              <p>Number </br>of transfers</p>
+              <p class="stats-number"><%= @pokemon.transfers.count %></p>
+            </div>
+            <div class = "stats-details">
+              <p>Percentage </br>of win</p>
+
+
+                <% @pokemon.transfers.each do |transfer| %>
+                  <% i = 0 %>
+                  <% j = 0 %>
+                  <% i += 1 if transfer.outcome == "win" %>
+                  <% j += 1 if transfer.outcome == "lose" %>
+                  <% if ( i + j ) == 0 %>
+                    <p class="stats-number">0</p>
+                  <% elsif ( i + j ) != 0 %>
+                    <p class="stats-number"><%= i / (i + j) %></p>
+                  <% end %>
+                <% end %>
+
+            </div>
+            <div class = "stats-details">
+              <p>Average </br>rating</p>
+              <% total = 0 %>
               <% @pokemon.transfers.each do |transfer| %>
-                <% i = 0 %>
-                <% j = 0 %>
-                <% i += 1 if transfer.outcome == "win" %>
-                <% j += 1 if transfer.outcome == "lose" %>
-                <p class="stats-number"><%= i / (i + j) %> %</p>
+                <% unless transfer.rating.nil? %>
+                  <% total += transfer.rating %>
+                  <% average_rating = total / @pokemon.transfers.count %>
+                  <p class="stats-stars"><% average_rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - average_rating).times do %>
+                    <i class="fas fa-star fa-star-grey"></i>
+                  <% end %>
+                <% else %>
+                  <p class="stats-number">/</p>
+                <% end %>
+
               <% end %>
+            </p>
+            </div>
           </div>
-          <div class = "stats-details">
-            <p>Average </br>rating</p>
-            <% total = 0 %>
+        </div>
+      </div>
+
+
+      <% reviews = @pokemon.transfers.map { |transfer| !transfer.nil? }  %>
+      <% ratings = @pokemon.transfers.sum { |transfer| transfer.rating }  %>
+
+      <% unless reviews.empty? || ratings = 0 %>
+        <div class="review-section">
+          <%= render 'shared/separator', title: 'REVIEWS', score: @pokemon.transfers.count %>
+          <div class="review-container">
             <% @pokemon.transfers.each do |transfer| %>
-              <% total += transfer.rating %>
-              <% average_rating = total / @pokemon.transfers.count %>
-              <p class="stats-stars"><% average_rating.times do %>
+              <p>REVIEW
+              <% transfer.rating.times do %>
                 <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - average_rating).times do %>
-                <i class="fas fa-star fa-star-grey"></i>
-              <% end %>
+              <% end %></p>
+              <p>COMMENT</p>
+              <p><%= transfer.comment %></p>
             <% end %>
-          </p>
           </div>
         </div>
-      </div>
-    </div>
+      <% end %>
 
-    <% reviews = @pokemon.transfers.map { |transfer| !transfer.nil? }  %>
-
-    <% unless reviews.nil?  %>
-      <div class="review-section">
-        <%= render 'shared/separator', title: 'REVIEWS', score: @pokemon.transfers.count %>
-        <div class="review-container">
-          <% @pokemon.transfers.each do |transfer| %>
-            <p>REVIEW
-            <% transfer.rating.times do %>
-              <i class="fas fa-star"></i>
-            <% end %></p>
-            <p>COMMENT</p>
-            <p><%= transfer.comment %></p>
-          <% end %>
+      <% if @pokemon.transfers.empty? %>
+        <div class="transfer-section">
+          <%= render 'shared/separator', title: 'TRANSFERS', score: @pokemon.transfers.count %>
+          <div class="transfer-container">
+            <% @pokemon.transfers.each do |transfer| %>
+              <p>TRANSFER CARD</p>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
 
-    <% if @pokemon.transfers %>
-      <div class="transfer-section">
-        <%= render 'shared/separator', title: 'TRANSFERS', score: @pokemon.transfers.count %>
-        <div class="transfer-container">
-          <% @pokemon.transfers.each do |transfer| %>
-            <p>TRANSFER CARD</p>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+
+
 </div>
 
 

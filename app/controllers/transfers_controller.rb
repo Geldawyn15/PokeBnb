@@ -1,13 +1,17 @@
 class TransfersController < ApplicationController
   before_action :set_transfer, only: %i[edit update destroy]
-  before_action :set_pokemon, only: %i[create edit]
+  before_action :set_pokemon, only: %i[new create edit]
+
+  def new
+    @transfer = Transfer.new
+  end
 
   def create
     @transfer = Transfer.new(params_transfer)
-    @transfer.trainer_id = current_user
-    @transfer.pokemon_id = @pokemon.id
+    @transfer.trainer = current_user
+    @transfer.pokemon = @pokemon
     if @transfer.save!
-      redirect_to user_path(current_user)
+      redirect_to new_pokemon_transfer_path(@pokemon.id)
     else
       render :new
     end
