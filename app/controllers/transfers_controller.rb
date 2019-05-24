@@ -64,3 +64,13 @@ class TransfersController < ApplicationController
     doc['types'][0]['type']['name'].downcase.capitalize
   end
 end
+
+
+
+
+
+
+
+
+
+

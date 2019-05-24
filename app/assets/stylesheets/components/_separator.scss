@@ -1,0 +1,29 @@
+.separator {
+  display: flex;
+  align-items: center;
+
+  .separator-content {
+    margin: 0;
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $text-dark;
+  }
+
+  .separator-badge {
+    background-color: $danger;
+    margin-left: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  hr {
+    background: $danger;
+  }
+}
