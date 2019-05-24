@@ -11,6 +11,7 @@ class PokemonsController < ApplicationController
   end
 
   def show
+    @transfer = Transfer.new
   end
 
   def new
@@ -19,7 +20,7 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(params_pokemon)
-    nidoran
+    @pokemon.name = nidoran
     @pokemon.professor_id = @user.id
     @pokemon.poke_type = api_pokemon_type
     @pokemon.save!
@@ -56,11 +57,12 @@ class PokemonsController < ApplicationController
     @search = params["search"]
     query = []
     if @search.present?
-      query << "name= '#{@search['name']}'" if @search["name"] != ''
-      query << "poke_type= '#{@search['type'].downcase.capitalize}'" if @search["type"] != ''
-      query << "level= '#{@search['level']}'" if @search["level"] != ''
+      query << "name ILIKE '\%#{@search['name']}\%'" if @search["name"] != ''
+      query << "poke_type ILIKE '\%#{@search['type'].downcase.capitalize}\%'" if @search["type"] != ''
+      query << "level = '#{@search['level']}'" if @search["level"] != ''
+      query = query.join(",")
       @pokemons = Pokemon.where(query)
-      @pokemons = @pokemons.joins(:transfers).where("transfers.date = ?", @search['date'])if @search["date"] != ''
+      @pokemons = @pokemons.joins(:transfers).where("transfers.date = ?", @search['date']) if @search["date"] != ''
     else
       @pokemons = Pokemon.all
     end
