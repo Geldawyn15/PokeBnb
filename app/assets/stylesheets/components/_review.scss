@@ -1,17 +1,16 @@
 .review-container {
-  border-style: solid;
-  border-color: #ff4949;
-  border-radius: 15%;
-  margin-top: -250px;
+  border-radius: 32px;
+  background-color: #EEEEEE;
+  margin: 24px auto;
+  text-align: left;
+  padding: 24px 48px;
+  max-width: 900px;
 }
 
-.review-container p {
-  color: black;
-  padding-right: 200px;
-  margin-top: 15px;
-  margin-left: 8px;
+.fa-star {
+  color: $info;
 }
 
-.fas {
-  color: yellow;
+.fa-star-grey {
+  color: $gray;
 }
