@@ -1,3 +1,4 @@
+$headers-font: "Raleway", "Helvetica", "sans-serif";
 
 .transfer_bkg {
   padding-top: 5vh;
@@ -9,6 +10,7 @@
 }
 
 .joseph-toto {
+  font-family: $headers-font
   color: black;
   position: absolute;
   top: 15vh;
