@@ -20,7 +20,7 @@
               <p class="stats-number"><%= @pokemon.transfers.count %></p>
             </div>
             <div class = "stats-details">
-              <p>Percentage </br>of win</p>
+              <p>Battle </br>outcome</p>
 
 
                 <% @pokemon.transfers.each do |transfer| %>
@@ -37,7 +37,7 @@
 
             </div>
             <div class = "stats-details">
-              <p>Average </br>rating</p>
+              <p>All </br>ratings</p>
               <% total = 0 %>
               <% @pokemon.transfers.each do |transfer| %>
                 <% unless transfer.rating.nil? %>
@@ -86,7 +86,7 @@
           <%= render 'shared/separator', title: 'TRANSFERS', score: @pokemon.transfers.count %>
           <div class="transfer-container">
             <% @pokemon.transfers.each do |transfer| %>
-              <p>TRANSFER CARD</p>
+              <%= render 'shared/show', transfer: transfer %>
             <% end %>
           </div>
         </div>
