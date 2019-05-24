@@ -11,24 +11,6 @@
 
 
 
-  .title {
-
-
-        h6 {
-          color: #000000;
-          font-size: 18px;
-        }
-
-
-      .content {
-
-        p {
-          color: #727272;
-        }
-
-  }
-
-
 
   <div class="wrapper2">
 
