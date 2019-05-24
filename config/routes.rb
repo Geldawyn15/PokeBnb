@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    resources :transfers, only: %i[new create]
+    resources :transfers, only: %i[new create edit]
   end
-  resources :transfers, only: %i[edit update destroy]
+  resources :transfers, only: %i[update destroy]
 end

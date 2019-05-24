@@ -39,7 +39,7 @@
         <% @user.owned_pokemons.each do |pokemon| %>
         <% @pokemon = pokemon %>
         <% if @user.owned_pokemons %>
-        <%= render '/shared/poke-card', object: @pokemon %>
+        <%= render 'shared/poke-card', object: @pokemon %>
         <% else %>
         <p> No Owned Pokemons </p>
         <% end %>
@@ -58,13 +58,11 @@
         <% @user.transfers.each do |transfer| %>
         <% @pokemon = Pokemon.find(transfer.pokemon_id) %>
         <% if @user.owned_pokemons %>
-        <%= render '/shared/poke-card', object: @pokemon %>
-        <% else %>
+        <%= render 'shared/show', transfer: transfer %>
+        <% else %>1
         <p> No transfer </p>
         <% end %>
         <% end %>
         </div>
-  </div>
+    </div>
 </main>
-
-
