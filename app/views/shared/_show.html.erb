@@ -18,21 +18,29 @@
         <tr>
           <tr>
           <th>Date</th>
-          <td></td>
+          <td> <%= transfer.date %></td>
         </tr>
+        <% if transfer.enemy_name.nil? %>
+        <tr><%= link_to 'Submit review', edit_transfer_path(transfer), method: :get %></tr>
+        <% else %>
         <tr>
           <th>Enemy name</th>
-          <td><%= @transfers.enemy_name%></td>
+          <td><%= transfer.enemy_name%></td>
         </tr>
         <tr>
           <th>Enemy Type</th>
-          <td><%= @transfers.enemy_type%></td>
+          <td><%= transfer.enemy_type%></td>
         </tr>
         <tr>
           <th>Enemy Level</th>
-          <td><%= @transfers.enemy_level%></td>
+          <td><%= transfer.enemy_level%></td>
+        </tr>
+         <tr>
+          <th>Battle Outcome</th>
+          <td><%= transfer.outcome%></td>
         </tr>
         <tr>
+        <% end %>
       </tbody>
     </table>
 </figure>
