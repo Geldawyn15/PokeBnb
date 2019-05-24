@@ -76,14 +76,16 @@ h6 {
 
 #wrapper .line {
   border-bottom: 2px solid lightgray;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 15px;
+  top: -15px;
 }
 
 #wrapper .textbox {
   position: absolute;
   width: 100%;
+  margin-bottom: 16px;
+  top: -10%;
 }
 
 #wrapper .textbox .text {
@@ -93,7 +95,7 @@ h6 {
   text-align: center;
   display: inline;
   font-size: 24px;
-  color: #000000
+  color: #000000;
 }
 
 .bio {
