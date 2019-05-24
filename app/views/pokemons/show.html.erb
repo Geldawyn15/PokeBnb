@@ -20,7 +20,7 @@
               <p class="stats-number"><%= @pokemon.transfers.count %></p>
             </div>
             <div class = "stats-details">
-              <p>Percentage </br>of win</p>
+              <p>Battle </br>outcome</p>
 
 
                 <% @pokemon.transfers.each do |transfer| %>
@@ -37,7 +37,7 @@
 
             </div>
             <div class = "stats-details">
-              <p>Average </br>rating</p>
+              <p>All </br>ratings</p>
               <% total = 0 %>
               <% @pokemon.transfers.each do |transfer| %>
                 <% unless transfer.rating.nil? %>
@@ -60,32 +60,33 @@
         </div>
       </div>
 
-
       <% reviews = @pokemon.transfers.map { |transfer| !transfer.nil? }  %>
-      <% ratings = @pokemon.transfers.sum { |transfer| transfer.rating }  %>
+      <% ratings = @pokemon.transfers.map { |transfer| transfer.rating }  %>
 
-      <% unless reviews.empty? || ratings = 0 %>
+      <% unless reviews.empty? %>
         <div class="review-section">
           <%= render 'shared/separator', title: 'REVIEWS', score: @pokemon.transfers.count %>
           <div class="review-container">
             <% @pokemon.transfers.each do |transfer| %>
-              <p>REVIEW
-              <% transfer.rating.times do %>
-                <i class="fas fa-star"></i>
-              <% end %></p>
-              <p>COMMENT</p>
-              <p><%= transfer.comment %></p>
+              <% if !transfer.rating.nil? %>
+                <p>REVIEW
+                <% transfer.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %></p>
+                <p>COMMENT</p>
+                <p><%= transfer.comment %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
 
-      <% if @pokemon.transfers.empty? %>
+      <% if !@pokemon.transfers.empty? %>
         <div class="transfer-section">
           <%= render 'shared/separator', title: 'TRANSFERS', score: @pokemon.transfers.count %>
           <div class="transfer-container">
             <% @pokemon.transfers.each do |transfer| %>
-              <p>TRANSFER CARD</p>
+              <%= render 'shared/show', transfer: transfer %>
             <% end %>
           </div>
         </div>
